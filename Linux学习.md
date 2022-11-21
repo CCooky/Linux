@@ -344,6 +344,7 @@ vim /etc/hosts
 
 （3）网站服务器辅助验证
 
+<<<<<<< HEAD
 
 
 
@@ -355,3 +356,36 @@ vim /etc/hosts
 
 
 ![image-20221115103212695](images/image-20221115103212695.png)
+=======
+# Linux 守护启动java
+
+**启动java程序**
+
+（1）直接启动，控制台退出则关掉应用
+
+    java -jar uap-register-server-1.0.0.jar
+
+（2）后台启动，控制台退出不会关掉应用
+
+    nohup  java -jar uap-register-server-1.0.0.jar &
+
+（3）后台启动并且输出日志，控制台退出不会关掉应用
+
+    nohup  java -jar uap-register-server-1.0.0.jar >> ./register.log 2>&1 &
+
+（3）后台启动(加内存)并且输出日志，控制台退出不会关掉应用
+
+    nohup java -jar -Xms1024m -Xmx2048m uap-register-server-1.0.0.jar>> ./register.log 2>&1 &
+
+
+
+**关闭程序**
+
+ （1）查询java应用程序
+
+    ps -ef|grep java
+
+ （2）强制杀掉进程
+
+    kill -9 xxx
+>>>>>>> 3b231fca5b1511f648ef2258a6e620fe957d7526
