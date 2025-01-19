@@ -52,7 +52,7 @@ linux系统主要基本上分两大类：
 
 支持tar包
 
-<img src="../../java笔记/Docker/images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vamly,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" />
+<img src="./images/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L21vamly,size_16,color_FFFFFF,t_70.png" alt="img" style="zoom:80%;" />
 
 
 
@@ -98,7 +98,7 @@ mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
 
 下载对应版本 repo 文件, 放入 /etc/yum.repos.d/ 
 
-<img src="../../java笔记/Docker/images/image-20220909165429389.png" alt="image-20220909165429389" style="zoom:80%;" />
+<img src="./images/image-20220909165429389.png" alt="image-20220909165429389" style="zoom:80%;" />
 
 ```cmd
 cd /etc/yum.repos.d
@@ -349,8 +349,6 @@ free -h
 
 1. vim
 2. gedit（好用）
-
-
 
 
 
@@ -687,6 +685,50 @@ DNS1=192.168.1.2
 
 # Shell基本命令
 
+## 0、Shell 概述
+
+参考资料：https://github.com/BigDataScholar/TheKingOfBigData/blob/master/note/shell/%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%B0%8F%E7%99%BD%E5%A6%82%E4%BD%95%E5%85%A5%E9%97%A8Shell%EF%BC%8C%E5%BF%AB%E6%9D%A5%E7%9C%8B%E7%9C%8B(%E6%94%B6%E8%97%8F)%E8%BF%99%E7%AF%87%E5%A4%A7%E6%80%BB%E7%BB%93.md
+
+​    程序员为什么需要学习Shell呢?
+
+​    原因也很简单，最明显的无非就是下面两点：
+
+- 需要看懂运维人员编写的 Shell 程序
+- 偶尔会编写一些简单 Shell 程序来管理集群，提高开发效率。
+
+<img src="images/image-20241128101839101.png" alt="image-20241128101839101" style="zoom: 67%;" />
+
+**Shell解析器**
+
+​    （1）Linux提供的Shell解析器有：
+
+```sh
+[root@node01 hive-1.1.0-cdh5.14.0]# cat /etc/shells
+/bin/sh
+/bin/bash
+/sbin/nologin
+/bin/dash
+/bin/tcsh
+/bin/csh
+```
+
+​    （2）bash和sh的关系
+
+```sh
+[root@node01 bin]$ ll | grep bash
+-rwxr-xr-x. 1 root root 941880 5月  11 2016 bash
+lrwxrwxrwx. 1 root root      4 5月  27 2017 sh -> bash
+```
+
+​    （3）Centos默认的解析器是bash
+
+```shell
+[root@node01 bin]$ echo $SHELL
+/bin/bash
+```
+
+
+
 ## 1、基础命令
 
 ```sh
@@ -729,21 +771,22 @@ history    #查看已经执行过历史命令
 
 
 
-![image-20221124165243784](images/image-20221124170734192.png)
-
-![image-20221124165308730](images/image-20221124165308730.png)
-
-![image-20221124165323429](images/image-20221124165323429.png)
-
-![image-20221124165543797](images/image-20221124165543797.png)
-
-![image-20221124165642301](images/image-20221124165642301.png)
-
-![image-20221124165751453](images/image-20221124165751453.png)、![image-20221124165832597](images/image-20221124165832597.png)
-
-![image-20221124165926170](images/image-20221124165926170.png)
-
-![image-20221124170015982](images/image-20221124170015982.png)
+> ![image-20221124165243784](images/image-20221124170734192.png)
+>
+> ![image-20221124165308730](images/image-20221124165308730.png)
+>
+> ![image-20221124165323429](images/image-20221124165323429.png)
+>
+> ![image-20221124165543797](images/image-20221124165543797.png)
+>
+> ![image-20221124165642301](images/image-20221124165642301.png)
+>
+> ![image-20221124165751453](images/image-20221124165751453.png)、![image-20221124165832597](images/image-20221124165832597.png)
+>
+> ![image-20221124165926170](images/image-20221124165926170.png)
+>
+> ![image-20221124170015982](images/image-20221124170015982.png)
+>
 
 
 
@@ -751,9 +794,11 @@ history    #查看已经执行过历史命令
 
 ![image-20221124171103056](images/image-20221124171103056.png)
 
-![image-20221124171036824](images/image-20221124171036824.png)
+<img src="images/image-20221124171036824.png" alt="image-20221124171036824" style="zoom: 67%;" />
 
-**既可以链接文件，也可以链接到文件夹**![image-20221124171255799](images/image-20221124171255799.png)
+既可以链接文件，也可以链接到文件夹
+
+<img src="images/image-20221124171255799.png" alt="image-20221124171255799" style="zoom:67%;" />
 
 ```sh
 # 在软连接的路径下，用pwd查看会出现什么情况呢？？
@@ -765,29 +810,25 @@ cd -P 软连接文件  # ---会直接进入到真实的目录文件路径
 
 
 
-![image-20221124172208186](images/image-20221124172208186.png)
-
-![image-20221124172236917](images/image-20221124172236917.png)
-
 ## 2、用户管理
 
-![image-20221124172340049](images/image-20221124172340049.png)
+<img src="images/image-20221124172340049.png" alt="image-20221124172340049" style="zoom:67%;" />
 
-![image-20221124172405705](images/image-20221124172405705.png)
+<img src="images/image-20221124172405705.png" alt="image-20221124172405705" style="zoom:67%;" />
 
-![image-20221124172426114](images/image-20221124172426114.png)
+<img src="images/image-20221124172426114.png" alt="image-20221124172426114" style="zoom:67%;" />
 
-![image-20221124172437754](images/image-20221124172437754.png)
+<img src="images/image-20221124172437754.png" alt="image-20221124172437754" style="zoom:67%;" />
 
-![image-20221124172449285](images/image-20221124172449285.png)
+<img src="images/image-20221124172449285.png" alt="image-20221124172449285" style="zoom:67%;" />
 
 ![image-20221124172654696](images/image-20221124172654696.png)
 
-![image-20221124172712727](images/image-20221124172712727.png)
+<img src="images/image-20221124172712727.png" alt="image-20221124172712727" style="zoom:67%;" />
 
-![image-20221124172724263](images/image-20221124172724263.png)
+<img src="images/image-20221124172724263.png" alt="image-20221124172724263" style="zoom:67%;" />
 
-![image-20221124172740211](images/image-20221124172740211.png)
+<img src="images/image-20221124172740211.png" alt="image-20221124172740211" style="zoom:67%;" />
 
 
 
@@ -799,13 +840,13 @@ cd -P 软连接文件  # ---会直接进入到真实的目录文件路径
 
 Linux系统是一种典型的多用户系统，不同的用户处于不同的地位，拥有不同的权限。为了保护系统的安全性，Linux系统对不同的用户访问同一文件（包括目录文件）的权限做了不同的规定。在Linux中我们可以使用 `ll` 或者 `ls -l` 命令来显示**一个文件的属性以及文件所属的用户和组。**
 
-![image-20221124173124290](images/image-20221124173124290.png)
+<img src="images/image-20221124173124290.png" alt="image-20221124173124290" style="zoom:67%;" />
 
 
 
 详细介绍文件权限类型
 
-![image-20221124173139774](images/image-20221124173139774.png)
+<img src="images/image-20221124173139774.png" alt="image-20221124173139774" style="zoom:67%;" />
 
 如果没有权限，就会出现减号[ - ]而已。从左至右用0-9这些数字来表示:
 
@@ -890,7 +931,125 @@ Linux系统是一种典型的多用户系统，不同的用户处于不同的地
 
   
 
+# 部署java相关命令
 
+## 1、防火墙权限设置
+
+```sh
+# 查看防火墙状态  开启防火墙  关闭防火墙
+systemctl status/start/stop firewalld  
+# 查看已经开放的已开放的临时端口
+firewall-cmd --list-ports
+# 查看所有永久开放的端口
+firewall-cmd --list-ports --permanent
+# 添加永久开放的端口
+firewall-cmd --add-port=8000/tcp --permanent
+# 关闭永久端口
+firewll-cmd --remove-port=8000/tcp --permanent
+# 重载入添加的端口：
+firewall-cmd --reload
+# 查询指定端口是否开启成功
+firewall-cmd --query-port=8000/tcp
+```
+
+## 2、查询端口冲突，并且解决
+
+```sh
+# 查询运行的java应用程序（只能查到PID，无法查到占用端口）
+ps -ef | grep java
+# 查询所有运行的应用程序
+ps -ef
+# 查看某个端口占用情况，可以看到pid
+netstat -anp | grep 8080
+# 查询全部端口占用情况
+netstat -anp
+# 根据pid查看占用的端口：
+netstat -antup | grep 48891132
+# 查看具体端口被哪个进程占用
+lsof -i : 8080
+# 强制杀死进程
+kill -9 pid
+```
+
+**1、ps命令**
+
+- **ps命令将某个进程显示出来**（是LINUX下最常用的也是非常强大的进程查看命令）
+
+- **grep命令是查找**（是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹配的行打印出来，grep全称是**Global Regular Expression Print**，表示全局正则表达式版本，它的使用权限是所有用户）
+
+- **中间的|是管道命令** 是指ps命令与grep同时执行
+
+- ps -ef | grep java查询**结果字段含义如下：主要看PID**
+
+  <img src="images/image-20230225150142140.png" alt="image-20230225150142140" style="zoom:80%;" />
+
+- **ps -ef | grep java的疑惑**
+
+  <img src="images/image-20230225145556810.png" alt="image-20230225145556810" style="zoom:80%;" />
+
+  <img src="images/image-20230225145908385.png" alt="image-20230225145908385" style="zoom:80%;" />
+
+
+
+**2、netstat命令**
+
+用于查看Linux服务器上当前机器监听的端口信息,
+
+<img src="images/image-20230225143933159.png" alt="image-20230225143933159" style="zoom:80%;" />
+
+
+
+## 3、启动jar包
+
+（1）直接启动。当前ssh窗口被锁定，不能操作其他命令，按CTRL + C打断程序运行，或直接关闭窗口，程序中止。
+
+```sh
+java -jar server-1.0.0.jar
+```
+
+（2）后台启动。&代表在后台运行。当前ssh窗口不被锁定，但是当窗口关闭时，程序中止。
+
+```sh
+java -jar server-1.0.0.jar &
+```
+
+（3）守护进程后台启动并输出日志，控制台窗口退出不会中止应用。不指定日志输出文件，则所有的输出都会被重定向到 `nohub.out` 的文件中。
+
+```sh
+nohup java -jar server-1.0.0.jar &
+```
+
+==（4）守护进程后台启动指定输出日志文件。==
+
+- 一个大于号：“ **>** spring.log ” 表示将输出重定向到Log.log中
+- 两个大于号：" **>>** " 表示将输出以追加的方式重定向到Log.log中。
+- **2>&1**：**标准错误输出**重定向到**标准输出**。也就是说将应用的标准输出和错误输出合在一起
+
+```sh
+nohup  java -jar server-1.0jar >> spring.log 2>&1 &
+```
+
+（5）守护进程后台启动( 指定系统分配内存 )
+
+```sh
+nohup java -jar -Xms1024m -Xmx2048m server-1.0.0.jar >> spring.log 2>&1 &
+```
+
+
+
+> **在Linux系统中0 1 2是一个文件描述符：**
+>
+> 标准的输入，输出和错误输出分别表示为STDIN, STDOUT, STDERR，也可以用0，1，2来表示。如下：
+>
+> ![image-20230225153159777](images/image-20230225153159777.png)
+>
+> 其中0表示键盘输入 1表示屏幕输出 2表示错误输出。
+>
+> **2>&1的含义**：将**标准错误输出重定向到标准输出。**
+>
+> **“> Log.log 2>&1” ：**表示将 stdout 和 stderr 合并后重定向到 Log.log
+>
+> 注意：符号**>&**是一个整体，不可分开，分开后就不是上述含义了
 
 
 
@@ -1124,42 +1283,18 @@ vim /etc/hosts
 
 
 
+# 好玩的Linux命令
 
+## 1、screenfetch命令
 
-# mysql
+这个命令可以用来显示系统、主题信息
 
+​    软件包安装
 
+```
+brew install screenfetch
+```
 
-![image-20221115103212695](images/image-20221115103212695.png)
+​    直接运行`screenfetch`命令即可
 
-# Linux 守护启动java
-
-**启动java程序**
-
-（1）直接启动，控制台退出则关掉应用
-
-    java -jar uap-register-server-1.0.0.jar
-
-（2）后台启动，控制台退出不会关掉应用
-
-    nohup  java -jar uap-register-server-1.0.0.jar &
-
-（3）后台启动并且输出日志，控制台退出不会关掉应用
-
-    nohup  java -jar uap-register-server-1.0.0.jar >> ./register.log 2>&1 &
-
-（3）后台启动(加内存)并且输出日志，控制台退出不会关掉应用
-
-    nohup java -jar -Xms1024m -Xmx2048m uap-register-server-1.0.0.jar>> ./register.log 2>&1 &
-
-
-
-**关闭程序**
-
- （1）查询java应用程序
-
-    ps -ef|grep java
-
- （2）强制杀掉进程
-
-    kill -9 xxx
+<img src="images/image-20241128101645187.png" alt="image-20241128101645187" style="zoom:67%;" />
